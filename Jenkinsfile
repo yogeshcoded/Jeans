@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Git Clone') {
             steps {
-                echo 'Building..'
+                git 'https://github.com/yogeshcoded/gradle-demo.git'
             }
         }
-        stage('Test') {
+        stage('build') {
             steps {
-                echo 'Testing..'
+                bat 'gradle clean build'
             }
         }
         stage('Deploy') {
